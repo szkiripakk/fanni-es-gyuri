@@ -600,6 +600,10 @@ body.revealed .hero__wash{opacity:1;}
   font-size:clamp(.72rem,.95rem,1rem);letter-spacing:.02em;color:var(--dc-fg);opacity:.85;
   transition:color .9s var(--ease),opacity .4s var(--ease);
 }
+@media(max-width:840px){
+  .swatches{gap:clamp(.3rem,2vw,.7rem);}
+  .swatch span{font-size:.65rem;}
+}
 .swatch:hover:not(.is-selected) .chip{transform:translateY(-6px) scale(1.08);}
 /* selected swatch lifts the whole element + adds ring on the chip */
 .swatch.is-selected{transform:translateY(-12px);}
@@ -627,7 +631,7 @@ body.revealed .hero__wash{opacity:1;}
   width:100%;
   font-family:"Cormorant Garamond",serif;
   font-size:1.2rem;
-  padding:1rem 1.2rem 1rem 3rem;
+  padding:1rem 3rem 1rem 3rem;
   border:1px solid var(--line);
   border-radius:100px;
   background:var(--cream);
@@ -635,6 +639,17 @@ body.revealed .hero__wash{opacity:1;}
   outline:none;
   transition:border .4s var(--ease),box-shadow .4s var(--ease),background .4s var(--ease);
 }
+.search-box__clear{
+  position:absolute;right:1rem;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;
+  background:none;border:none;cursor:pointer;padding:0;
+  display:none;align-items:center;justify-content:center;
+  color:var(--ink-soft);
+  transition:color .2s;
+}
+.search-box__clear:hover{color:var(--ink);}
+.search-box__clear svg{width:16px;height:16px;}
+.search-box.has-value .search-box__clear{display:flex;}
 .search-box input:focus{
   border-color:var(--blue);background:var(--white);
   box-shadow:0 0 0 4px rgba(155,174,212,.22);
@@ -954,7 +969,16 @@ body.revealed .hero__wash{opacity:1;}
       a szállásról, a faházbeosztásról, a helyszín megközelítéséről és a másnapi morzsa party-ról —
       hogy a nagy napon mindenkinek csak az ünneplésre kelljen figyelnie.
     </p>
-    <div class="divider-orn" aria-hidden="true">
+    <div style="margin-top:2.4rem;text-align:center;">
+      <a class="btn" target="_blank" rel="noopener"
+         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Indul%C3%A1s+a+kempingt%C5%91l+a+Zenit+Lovard%C3%A1hoz&dates=20260626T134500Z/20260626T140000Z&details=Minden%20inf%C3%B3%20amit%20tudnod%20kell%3A%0Agyuriesfanni.hu%0A%0ASz%C3%A1ll%C3%A1s%20helysz%C3%ADne%3A%0A%3Ca%20href%3D%22https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2F%2Fdata%3D%214m2%213m1%211s0x474149d36d0b5e17%3A0x41d3114eeeff1170%3Fsa%3DX%26ved%3D1t%3A8290%26ictx%3D111%22%3EV%C3%A1rosi%20Strandf%C3%BCrd%C5%91%20%C3%A9s%20Kemping%2C%20T%C3%B6r%C3%B6kszentmikl%C3%B3s%2C%20Wessel%C3%A9nyi%20u.%2051-53%2C%205200%3C%2Fa%3E%0A%0AEsk%C3%BCv%C5%91%20helysz%C3%ADne%3A%0A%3Ca%20href%3D%22https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2F%2Fdata%3D%214m2%213m1%211s0x4741498eb129ed17%3A0xb29f269f4d3e9dfd%3Fsa%3DX%26ved%3D1t%3A8290%26ictx%3D111%22%3EZenit%20Lovarda%20-%20T%C3%B6r%C3%B6kszentmikl%C3%B3s%3C%2Fa%3E&location=T%C3%B6r%C3%B6kszentmikl%C3%B3si+V%C3%A1rosi+Strand+%C3%A9s+Kemping">
+        Naptárba mentés
+      </a>
+      <p style="margin-top:1rem;font-size:.9rem;color:var(--ink-soft);font-style:italic;line-height:1.6;">
+        Ha elmented a naptáradba, minden fontos infó — helyszínek, linkek, tudnivalók — egyetlen kattintásra elérhető lesz, anélkül hogy visszakeresned az oldalt.
+      </p>
+    </div>
+    <div class="divider-orn" aria-hidden="true" style="margin-top:2.4rem;">
       <svg viewBox="0 0 240 24" fill="none" stroke="currentColor" stroke-width="1.4">
         <path d="M2 12h78"/><path d="M238 12h-78"/>
         <path d="M120 4c-8 4-8 4 0 8 8-4 8-4 0-8z" fill="currentColor" stroke="none"/>
@@ -1159,7 +1183,10 @@ body.revealed .hero__wash{opacity:1;}
     <div class="fahaz-search reveal" data-d="1">
       <div class="search-box">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        <input id="guestSearch" type="text" placeholder="Szűrj névre…" autocomplete="off" aria-label="Vendég keresése" />
+        <input id="guestSearch" type="text" placeholder="Nézd meg hol alszol" autocomplete="off" aria-label="Vendég keresése" />
+        <button class="search-box__clear" id="searchClear" aria-label="Keresés törlése" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
       </div>
     </div>
     <div class="cabin-grid reveal" data-d="2" id="cabinGrid"></div>
@@ -1229,7 +1256,7 @@ body.revealed .hero__wash{opacity:1;}
           <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
         </a>
         <a class="btn ghost" target="_blank" rel="noopener"
-           href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Indul%C3%A1s+a+kempingt%C5%91l+a+Zenit+Lovard%C3%A1hoz&dates=20260626T134500Z/20260626T140000Z&details=A+kempingt%C5%91l+a+Zenit+Lovarda+kb.+5+perc+gyalog.&location=T%C3%B6r%C3%B6kszentmikl%C3%B3si+V%C3%A1rosi+Strand+%C3%A9s+Kemping">
+           href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Indul%C3%A1s+a+kempingt%C5%91l+a+Zenit+Lovard%C3%A1hoz&dates=20260626T134500Z/20260626T140000Z&details=Minden%20inf%C3%B3%20amit%20tudnod%20kell%3A%0Agyuriesfanni.hu%0A%0ASz%C3%A1ll%C3%A1s%20helysz%C3%ADne%3A%0A%3Ca%20href%3D%22https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2F%2Fdata%3D%214m2%213m1%211s0x474149d36d0b5e17%3A0x41d3114eeeff1170%3Fsa%3DX%26ved%3D1t%3A8290%26ictx%3D111%22%3EV%C3%A1rosi%20Strandf%C3%BCrd%C5%91%20%C3%A9s%20Kemping%2C%20T%C3%B6r%C3%B6kszentmikl%C3%B3s%2C%20Wessel%C3%A9nyi%20u.%2051-53%2C%205200%3C%2Fa%3E%0A%0AEsk%C3%BCv%C5%91%20helysz%C3%ADne%3A%0A%3Ca%20href%3D%22https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2F%2Fdata%3D%214m2%213m1%211s0x4741498eb129ed17%3A0xb29f269f4d3e9dfd%3Fsa%3DX%26ved%3D1t%3A8290%26ictx%3D111%22%3EZenit%20Lovarda%20-%20T%C3%B6r%C3%B6kszentmikl%C3%B3s%3C%2Fa%3E&location=T%C3%B6r%C3%B6kszentmikl%C3%B3si+V%C3%A1rosi+Strand+%C3%A9s+Kemping">
           Naptárba mentés · 15:45
         </a>
       </div>
@@ -1280,7 +1307,7 @@ body.revealed .hero__wash{opacity:1;}
     <p class="eyebrow center">Kapcsolat</p>
     <h2>Bármi kérdés?</h2>
     <p class="lede" style="margin-top:1rem">
-      Írjatok nekünk bárhol, ahol kényelmes. Ha kérdésetek van az érkezéssel, szállással,
+      Ha kérdésetek van az érkezéssel, szállással,
       faházbeosztással vagy bármi mással kapcsolatban, keressetek minket nyugodtan.
     </p>
     <div class="btnrow" style="justify-content:center;margin-top:2rem">
@@ -1296,7 +1323,7 @@ body.revealed .hero__wash{opacity:1;}
 <footer class="footer">
   <p class="fnames">Fanni &amp; Gyuri</p>
   <p class="fmeta">2026. június 26. · Zenit Lovarda</p>
-  <p class="fnote">Köszönjük, hogy velünk ünnepeltek. ♡</p>
+  <p class="fnote">Köszönjük, hogy velünk ünnepeltek.</p>
 </footer>
 
 <!-- ===================== FLOATING CONTACT BUTTON ===================== -->
@@ -1539,7 +1566,16 @@ body.revealed .hero__wash{opacity:1;}
   });
 
   var guestInput = document.getElementById("guestSearch");
+  var searchBox = guestInput.closest(".search-box");
+  var searchClear = document.getElementById("searchClear");
+  searchClear.addEventListener("click", function(){
+    guestInput.value = "";
+    searchBox.classList.remove("has-value");
+    guestInput.dispatchEvent(new Event("input"));
+    guestInput.focus();
+  });
   guestInput.addEventListener("input", function(){
+    searchBox.classList.toggle("has-value", this.value.length > 0);
     var q = norm(this.value);
     grid.querySelectorAll(".cabin-card").forEach(function(card){
       var guests = card.querySelectorAll(".cabin-guest");
