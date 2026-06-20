@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Fanni & Gyuri · 2026. június 26.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Luxurious+Script&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   FANNI & GYURI — wedding one-pager
+   Palette: off-white / white / #dadedf #9baed4 #5d7b9f #c0cfb2 #96a58d
+   Display: Luxurious Script  ·  Body: Cormorant Garamond
+   ============================================================ */
+
+:root{
+  --cream:#faf7f1;
+  --cream-2:#f3efe6;
+  --white:#ffffff;
+  --mist:#dadedf;
+  --peri:#9baed4;
+  --blue:#5d7b9f;
+  --blue-deep:#46607d;
+  --sage-l:#c0cfb2;
+  --sage:#96a58d;
+  --ink:#2d3b48;
+  --ink-soft:#5c6b78;
+  --line:rgba(93,123,159,.22);
+  --shadow:0 24px 60px -28px rgba(45,59,72,.45);
+  --shadow-soft:0 16px 44px -24px rgba(45,59,72,.35);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+
+/* ---------- Preloader (door video → seamless hand-off to hero) ---------- */
+body.preloading{overflow:hidden;}
+#preloader{
+  position:fixed;inset:0;z-index:100000;
+  background:#1f2a33;
+  overflow:hidden;
+  transition:opacity .9s ease,visibility .9s;
+}
+/* .pre-stage mirrors .hero__media geometry so the last video frame lands
+   exactly where the hero image sits — a clean cross-fade, no jump. */
+#preloader .pre-stage{position:absolute;inset:-12% 0;}
+#preloader video{
+  width:100%;height:100%;
+  object-fit:cover;object-position:50% 45%;
+  transform:scale(1.02);                 /* mirrors .hero__media img */
+}
+#preloader.hidden{opacity:0;visibility:hidden;}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:clamp(1.06rem,.55rem + .85vw,1.32rem);
+  font-weight:400;
+  line-height:1.62;
+  letter-spacing:.1px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+
+::selection{background:var(--sage-l);color:var(--ink);}
+
+/* ---------- Typographic system ---------- */
+h1,h2{
+  font-family:"Luxurious Script",cursive;
+  font-weight:400;
+  line-height:.98;
+  letter-spacing:.5px;
+  margin:0;
+  color:var(--blue-deep);
+}
+h1{font-size:clamp(3.6rem,2.2rem + 7vw,8.2rem);}
+h2{font-size:clamp(2.9rem,1.7rem + 5.4vw,5.4rem);}
+h3{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:500;
+  font-size:clamp(1.5rem,1.1rem + 1.3vw,2.15rem);
+  letter-spacing:.3px;
+  margin:0;
+  color:var(--ink);
+}
+h4{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:600;
+  font-size:1.15rem;
+  letter-spacing:.4px;
+  margin:0;
+  color:var(--blue-deep);
+}
+p{margin:0 0 1rem;}
+.eyebrow{
+  font-family:"Cormorant Garamond",serif;
+  text-transform:uppercase;
+  letter-spacing:.42em;
+  font-size:.74rem;
+  font-weight:600;
+  color:var(--sage);
+  display:inline-flex;
+  align-items:center;
+  gap:.85rem;
+  margin:0 0 1.1rem;
+}
+.eyebrow::before{
+  content:"";
+  width:34px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--sage));
+}
+.eyebrow.center{display:flex;justify-content:center;}
+.eyebrow.center::after{
+  content:"";
+  width:34px;height:1px;
+  background:linear-gradient(90deg,var(--sage),transparent);
+}
+
+/* ---------- Navigation ---------- */
+.nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:60;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:.95rem clamp(1.1rem,4vw,3rem);
+  background:rgba(250,247,241,0);
+  backdrop-filter:blur(0px);
+  transition:background .5s var(--ease),backdrop-filter .5s var(--ease),
+             box-shadow .5s var(--ease),padding .5s var(--ease);
+}
+.nav.scrolled{
+  background:rgba(250,247,241,.86);
+  backdrop-filter:blur(14px) saturate(1.2);
+  box-shadow:0 1px 0 var(--line),0 18px 40px -34px rgba(45,59,72,.6);
+  padding-top:.7rem;padding-bottom:.7rem;
+}
+.nav__brand{
+  font-family:"Luxurious Script",cursive;
+  font-size:1.85rem;
+  line-height:1;
+  color:var(--blue-deep);
+  white-space:nowrap;
+  transition:color .4s var(--ease);
+}
+.nav:not(.scrolled) .nav__brand{color:var(--white);text-shadow:0 2px 18px rgba(45,59,72,.4);}
+.nav__links{
+  display:flex;
+  align-items:center;
+  gap:clamp(.5rem,1.2vw,1.4rem);
+  list-style:none;margin:0;padding:0;
+}
+.nav__links a{
+  position:relative;
+  font-size:.96rem;
+  letter-spacing:.04em;
+  color:var(--ink);
+  padding:.3rem 0;
+  white-space:nowrap;
+  transition:color .35s var(--ease);
+}
+.nav:not(.scrolled) .nav__links a{color:rgba(255,255,255,.92);text-shadow:0 1px 12px rgba(45,59,72,.45);}
+.nav__links a::after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:-1px;
+  height:1px;
+  background:currentColor;
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .4s var(--ease);
+  opacity:.8;
+}
+.nav__links a:hover::after,
+.nav__links a.active::after{transform:scaleX(1);}
+.nav__links a.active{color:var(--blue);}
+.nav:not(.scrolled) .nav__links a.active{color:#fff;}
+
+.nav__toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:42px;height:42px;
+  background:none;border:none;cursor:pointer;
+  padding:0;
+}
+.nav__toggle span{
+  display:block;height:1.6px;width:24px;margin:0 auto;
+  background:var(--ink);
+  transition:transform .4s var(--ease),opacity .3s var(--ease),background .4s var(--ease);
+}
+.nav:not(.scrolled) .nav__toggle span{background:#fff;}
+.nav.open .nav__toggle span:nth-child(1){transform:translateY(6.6px) rotate(45deg);}
+.nav.open .nav__toggle span:nth-child(2){opacity:0;}
+.nav.open .nav__toggle span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg);}
+
+@media(max-width:980px){
+  .nav__toggle{display:flex;}
+
+  /* fullscreen overlay */
+  .nav__links{
+    position:fixed;
+    inset:0;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:0;
+    padding:0;
+    background:#faf7f1; /* solid cream — no transparency */
+    z-index:58;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.03);
+    transition:opacity .4s var(--ease),visibility .4s,transform .4s var(--ease);
+  }
+  .nav.open .nav__links{opacity:1;visibility:visible;transform:scale(1);}
+
+  .nav__links li{width:100%;text-align:center;}
+  .nav__links a,
+  .nav:not(.scrolled) .nav__links a{
+    display:block;
+    color:var(--ink);
+    font-size:clamp(1.15rem,5vw,1.5rem);
+    letter-spacing:.04em;
+    text-shadow:none;
+    padding:.7rem 2rem;
+  }
+  .nav__links a:hover,
+  .nav__links a.active,
+  .nav:not(.scrolled) .nav__links a.active{color:var(--blue);}
+  .nav__links a::after{display:none;} /* remove underline animation */
+
+  /* nav bar always solid + visible above the overlay when open */
+  .nav.open{
+    background:#faf7f1;
+    backdrop-filter:none;
+    box-shadow:0 1px 0 rgba(0,0,0,.08);
+    z-index:60;
+  }
+  .nav.open .nav__toggle span{background:var(--ink);}
+  .nav__backdrop{display:none;}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero__media{position:absolute;inset:-12% 0 -12% 0;z-index:-2;}
+.hero__media picture{display:block;width:100%;height:100%;}
+.hero__media img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 45%;
+  will-change:transform;
+}
+/* light fade overlay — fades in after the preloader hands off, cueing the
+   guest that the site is ready to explore */
+.hero__wash{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(255,255,255,.34) 0%,
+    rgba(250,247,241,.16) 34%,
+    rgba(255,255,255,0) 58%);
+  opacity:0;
+  transition:opacity 1.3s cubic-bezier(.22,.61,.36,1);
+}
+body.revealed .hero__wash{opacity:1;}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(120% 80% at 50% 8%,rgba(45,59,72,.34) 0%,transparent 55%),
+    linear-gradient(to top,rgba(45,59,72,.72) 0%,rgba(45,59,72,.18) 38%,rgba(45,59,72,.12) 100%);
+}
+.hero__inner{
+  padding:0 1.4rem clamp(8rem,20vh,14rem);
+  color:#fff;
+  max-width:1000px;
+  position:relative;z-index:2;
+}
+@media(max-height:720px){.hero__scroll{display:none;}}
+.hero__eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.5em;
+  font-size:clamp(.72rem,.6rem + .3vw,.86rem);
+  font-weight:600;
+  color:rgba(255,255,255,.9);
+  margin:0 0 1.4rem;
+}
+.hero h1{color:#fff;text-shadow:0 14px 50px rgba(20,28,36,.5);}
+.hero__amp{
+  display:inline-block;
+  font-size:.62em;
+  vertical-align:.12em;
+  color:var(--sage-l);
+  padding:0 .12em;
+}
+.hero__meta{
+  margin-top:1.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+  font-size:clamp(1.05rem,.8rem + .6vw,1.4rem);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.95);
+}
+.hero__meta .dot{width:5px;height:5px;border-radius:50%;background:var(--sage-l);}
+.hero__scroll{
+  position:absolute;
+  left:50%;bottom:1.6rem;
+  transform:translateX(-50%);
+  z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  color:rgba(255,255,255,.85);
+  font-size:.66rem;letter-spacing:.35em;text-transform:uppercase;
+}
+.hero__scroll .line{width:1px;height:46px;background:rgba(255,255,255,.6);overflow:hidden;position:relative;}
+.hero__scroll .line::after{
+  content:"";position:absolute;inset:0;background:#fff;
+  animation:scrolldot 2.4s var(--ease) infinite;
+}
+@keyframes scrolldot{0%{transform:translateY(-100%);}60%,100%{transform:translateY(100%);}}
+
+/* ---------- Layout primitives ---------- */
+.section{
+  position:relative;
+  padding:clamp(4.5rem,10vh,9rem) clamp(1.2rem,5vw,3rem);
+}
+.section.alt{background:var(--white);}
+.wrap{max-width:1180px;margin:0 auto;}
+.narrow{max-width:760px;margin:0 auto;}
+[id]{scroll-margin-top:84px;}
+
+.lede{
+  font-size:clamp(1.2rem,1rem + .7vw,1.55rem);
+  color:var(--ink-soft);
+  font-weight:400;
+}
+
+/* ---------- Intro / welcome ---------- */
+.intro{text-align:center;}
+.intro .script-accent{
+  font-family:"Luxurious Script",cursive;
+  font-size:clamp(2.4rem,1.6rem + 3vw,4rem);
+  color:var(--blue);
+  line-height:1;
+  margin-bottom:.4rem;
+}
+.divider-orn{
+  display:flex;align-items:center;justify-content:center;gap:1rem;
+  margin:2.4rem auto;color:var(--sage);
+}
+.divider-orn svg{width:120px;height:auto;opacity:.85;}
+
+/* ---------- Two column feature ---------- */
+.feature{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(2rem,5vw,5.5rem);
+  align-items:center;
+}
+.feature.reverse .feature__media{order:2;}
+.feature__media{position:relative;}
+.feature__media .frame{
+  position:relative;
+  overflow:hidden;
+  border-radius:2px;
+  box-shadow:var(--shadow);
+  aspect-ratio:4/5;
+}
+.feature__media .frame.tall{aspect-ratio:3/4;}
+.feature__media .frame img{
+  width:100%;height:118%;object-fit:cover;
+  will-change:transform;
+}
+.feature__media .tagchip{
+  position:absolute;
+  bottom:-18px;
+  background:var(--white);
+  color:var(--blue-deep);
+  font-family:"Luxurious Script",cursive;
+  font-size:1.7rem;
+  line-height:1;
+  padding:.7rem 1.5rem .9rem;
+  box-shadow:var(--shadow-soft);
+  white-space:nowrap;
+}
+.feature.reverse .feature__media .tagchip{left:-14px;}
+.feature:not(.reverse) .feature__media .tagchip{right:-14px;}
+.feature__body{max-width:520px;}
+
+/* ---------- Schedule / timeline ---------- */
+.timeline{
+  display:grid;
+  gap:0;
+  margin-top:2.6rem;
+  border-top:1px solid var(--line);
+}
+.tl-row{
+  display:grid;
+  grid-template-columns:minmax(120px,160px) 1fr;
+  gap:clamp(1rem,4vw,3rem);
+  align-items:baseline;
+  padding:1.5rem clamp(.6rem,2vw,1.4rem);
+  border-bottom:1px solid var(--line);
+  border-radius:8px;
+  position:relative;
+  transition:background .5s var(--ease),transform .5s var(--ease);
+}
+.tl-row::before{
+  content:"";position:absolute;left:0;top:18%;bottom:18%;width:2px;
+  background:linear-gradient(var(--sage),var(--blue));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .5s var(--ease);
+}
+.tl-row:hover{
+  background:linear-gradient(90deg,rgba(192,207,178,.22),rgba(155,174,212,.08) 70%,transparent);
+  transform:translateX(6px);
+}
+.tl-row:hover::before{transform:scaleY(1);}
+.tl-row .time{
+  font-family:"Luxurious Script",cursive;
+  font-size:clamp(2.2rem,1.4rem + 2vw,3.2rem);
+  line-height:.9;
+  color:var(--blue);
+  transition:color .45s var(--ease),transform .5s var(--ease);
+}
+.tl-row:hover .time{color:var(--sage);transform:scale(1.06);}
+.tl-row .what h3{margin-bottom:.15rem;transition:color .45s var(--ease);}
+.tl-row:hover .what h3{color:var(--blue-deep);}
+.tl-row .what p{margin:0;color:var(--ink-soft);}
+
+/* ---------- Info cards ---------- */
+.cardgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(248px,1fr));
+  gap:clamp(1rem,2.4vw,1.8rem);
+  margin-top:2.6rem;
+}
+.card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:2rem 1.8rem;
+  position:relative;
+  overflow:hidden;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.section.alt .card{background:var(--cream);}
+.card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(var(--sage),var(--blue));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform .6s var(--ease);
+}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-soft);}
+.card:hover::before{transform:scaleY(1);}
+.card .ico{
+  width:40px;height:40px;color:var(--sage);margin-bottom:1rem;
+}
+.card h4{margin-bottom:.5rem;font-size:1.28rem;}
+.card p{margin:0;color:var(--ink-soft);font-size:1.02rem;}
+.card .big{
+  font-family:"Luxurious Script",cursive;
+  font-size:2.2rem;color:var(--blue);line-height:1;display:block;margin-top:.2rem;
+}
+
+/* ---------- Checklist ---------- */
+.checklist{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.9rem;}
+.checklist li{
+  position:relative;padding-left:2.1rem;color:var(--ink-soft);
+}
+.checklist li::before{
+  content:"";position:absolute;left:0;top:.5em;
+  width:14px;height:8px;border-left:1.6px solid var(--sage);border-bottom:1.6px solid var(--sage);
+  transform:rotate(-45deg);
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  --bg:var(--blue);
+  display:inline-flex;align-items:center;gap:.5rem;
+  white-space:nowrap;
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.02rem;font-weight:600;letter-spacing:.04em;
+  padding:.85rem 1.6rem;
+  color:#fff;background:var(--bg);
+  border:1px solid var(--bg);
+  border-radius:100px;
+  cursor:pointer;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .4s var(--ease);
+  box-shadow:0 14px 30px -18px rgba(70,96,125,.9);
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 22px 40px -18px rgba(70,96,125,.95);}
+.btn .arr{width:13px;height:13px;flex:0 0 auto;transition:transform .4s var(--ease);}
+.btn:hover .arr{transform:translate(3px,-3px);}
+.btn.ghost{
+  background:transparent;color:var(--blue-deep);border-color:var(--line);box-shadow:none;
+}
+.btn.ghost:hover{background:var(--cream-2);box-shadow:var(--shadow-soft);}
+.btn.sage{--bg:var(--sage);box-shadow:0 14px 30px -18px rgba(150,165,141,.9);}
+.btnrow{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.8rem;}
+
+/* ---------- Parallax dividers ---------- */
+.parallax{
+  position:relative;
+  height:100vh;
+  height:100svh;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  isolation:isolate;
+}
+.parallax__img{position:absolute;inset:-22% 0;z-index:-2;}
+.parallax__img img{width:100%;height:100%;object-fit:cover;will-change:transform;}
+@media(min-width:841px){.parallax--venue .parallax__img img{object-position:50% 30%;}}
+.parallax::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(45,59,72,.30),rgba(45,59,72,.42));
+}
+.parallax__quote{
+  text-align:center;color:#fff;padding:2rem;max-width:880px;
+}
+.parallax__quote .eyebrow{color:rgba(255,255,255,.85);}
+.parallax__quote .eyebrow::before,.parallax__quote .eyebrow::after{background:rgba(255,255,255,.6);}
+.parallax__quote .q{
+  font-family:"Luxurious Script",cursive;
+  font-size:clamp(2.6rem,1.6rem + 5vw,5.4rem);
+  line-height:1;
+  text-shadow:0 16px 50px rgba(20,28,36,.5);
+}
+.parallax__quote .sub{
+  margin-top:1.2rem;font-size:clamp(1.05rem,.9rem + .5vw,1.35rem);
+  letter-spacing:.04em;color:rgba(255,255,255,.92);
+}
+/* cinematic video divider — auto-snaps to fullscreen, plays once, freezes on last frame */
+.parallax--video .parallax__video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 50%;
+  z-index:-2;
+  /* first frame shown until the clip paints over it → seamless start */
+  background:#1f2a33 url("vs-poster.jpg") 50% 50%/cover no-repeat;
+}
+.parallax--video .parallax__quote{        /* delayed entry — hidden until the clip is rolling */
+  opacity:0;transform:translateY(44px);
+  transition:opacity 1.5s var(--ease) .7s, transform 1.5s var(--ease) .7s;
+}
+.parallax--video.is-active .parallax__quote{opacity:1;transform:none;}
+
+/* ---------- Dress code (per-colour photo background + subtle colour overlay) ---------- */
+.dress{
+  position:relative;
+  text-align:center;
+  min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:#243039;            /* fallback while photos load */
+  isolation:isolate;
+}
+.dress__tint{                                            /* solid colour fill */
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:#5d7b9f;opacity:1;
+  transition:background-color 1s var(--ease);
+}
+.dress{--dc-fg:#ffffff;}                                 /* text colour, swapped per swatch (default mélykék → white) */
+.dress__content{position:relative;z-index:2;width:100%;}
+.dress .eyebrow{color:var(--dc-fg);opacity:.82;transition:color .9s var(--ease);}
+.dress .eyebrow::before{background:linear-gradient(90deg,transparent,currentColor);}
+.dress .eyebrow.center::after{background:linear-gradient(90deg,currentColor,transparent);}
+.dress h2{color:var(--dc-fg);transition:color .9s var(--ease);text-shadow:0 6px 30px rgba(0,0,0,.12);}
+.dress .lede{color:var(--dc-fg);opacity:.9;transition:color .9s var(--ease);}
+
+.swatches{
+  display:flex;flex-wrap:nowrap;justify-content:center;gap:clamp(.5rem,3vw,2.4rem);
+  margin:3rem 0 0;padding:0 .5rem;
+}
+.swatch{
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  cursor:pointer;background:none;border:none;padding:0 .25rem;font:inherit;color:inherit;
+  transition:transform .4s var(--ease);
+  flex-shrink:0;
+}
+.swatch:focus-visible{outline:none;}
+.swatch .chip{
+  width:clamp(44px,9.5vw,82px);height:clamp(44px,9.5vw,82px);border-radius:50%;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 14px 28px -16px rgba(0,0,0,.5);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.swatch span{
+  font-size:clamp(.72rem,.95rem,1rem);letter-spacing:.02em;color:var(--dc-fg);opacity:.85;
+  transition:color .9s var(--ease),opacity .4s var(--ease);
+}
+.swatch:hover:not(.is-selected) .chip{transform:translateY(-6px) scale(1.08);}
+/* selected swatch lifts the whole element + adds ring on the chip */
+.swatch.is-selected{transform:translateY(-12px);}
+.swatch.is-selected .chip{
+  transform:scale(1.1);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 0 0 2px var(--dc-fg),0 0 0 5px rgba(255,255,255,.32),0 16px 30px -16px rgba(0,0,0,.5);
+}
+.swatch.is-selected span{opacity:1;font-weight:600;}
+
+/* ---------- Faház search ---------- */
+.search-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:clamp(1.6rem,4vw,2.6rem);
+  box-shadow:var(--shadow-soft);
+  margin-top:2.4rem;
+}
+.search-box{position:relative;}
+.search-box svg{
+  position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);
+  width:20px;height:20px;color:var(--sage);pointer-events:none;
+}
+.search-box input{
+  width:100%;
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.2rem;
+  padding:1rem 1.2rem 1rem 3rem;
+  border:1px solid var(--line);
+  border-radius:100px;
+  background:var(--cream);
+  color:var(--ink);
+  outline:none;
+  transition:border .4s var(--ease),box-shadow .4s var(--ease),background .4s var(--ease);
+}
+.search-box input:focus{
+  border-color:var(--blue);background:var(--white);
+  box-shadow:0 0 0 4px rgba(155,174,212,.22);
+}
+.search-results{margin-top:1.4rem;display:grid;gap:.5rem;min-height:1em;}
+.result-row{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.85rem 1.2rem;
+  background:var(--cream);
+  border:1px solid var(--line);
+  border-radius:8px;
+  animation:fadeUp .5s var(--ease) both;
+}
+.result-row .name{font-weight:500;color:var(--ink);}
+.result-row .room{
+  font-family:"Luxurious Script",cursive;font-size:1.5rem;color:var(--blue);line-height:1;
+}
+.search-empty{color:var(--ink-soft);font-style:italic;padding:.4rem .2rem;}
+.search-note{margin-top:1rem;font-size:.95rem;color:var(--ink-soft);font-style:italic;}
+
+/* ---------- Cabin grid ---------- */
+.fahaz-search{width:90%;max-width:480px;margin:2rem auto 0;}
+.cabin-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.4rem;
+  width:90%;
+  margin:1.6rem auto 0;
+}
+@media(max-width:840px){
+  .fahaz-search{width:100%;}
+  .cabin-grid{grid-template-columns:1fr;width:100%;}
+}
+.cabin-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:1.4rem 1.4rem 1.2rem;
+  box-shadow:var(--shadow-soft);
+}
+.cabin-card.no-match{opacity:.25;pointer-events:none;}
+.cabin-card__title{
+  font-family:"Cormorant Garamond",serif;
+  font-size:1rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:.9rem;
+  padding-bottom:.6rem;
+  border-bottom:1px solid var(--line);
+}
+.cabin-rooms{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.6rem 1rem;
+}
+@media(max-width:500px){
+  .cabin-rooms{grid-template-columns:1fr;}
+}
+.cabin-room{
+  padding:.5rem .6rem;
+  background:var(--white);
+  border-radius:6px;
+}
+.cabin-guest.dim{opacity:.3;transition:opacity .25s;}
+.cabin-room__label{
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:.4rem;
+}
+.cabin-guest{
+  padding:.35rem 0;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.cabin-guest:last-child{border-bottom:none;}
+.cabin-guest.hidden{display:none;}
+.cabin-guest__nick{
+  font-family:"Luxurious Script",cursive;
+  font-size:1.45rem;
+  color:var(--ink);
+  line-height:1.1;
+}
+.cabin-guest__full{
+  font-size:.78rem;
+  color:var(--ink-soft);
+  margin-top:.02rem;
+}
+
+/* ---------- Map graphic ---------- */
+.mapwrap{
+  margin-top:2.6rem;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:clamp(1.2rem,3vw,2rem);
+  box-shadow:var(--shadow-soft);
+}
+.section.alt .mapwrap{background:var(--cream);}
+.mapwrap svg{width:100%;height:auto;display:block;}
+.walkpath{
+  stroke-dasharray:8 9;
+  stroke-dashoffset:600;
+  transition:stroke-dashoffset 2.4s var(--ease);
+}
+.in-view .walkpath{stroke-dashoffset:0;}
+
+/* ---------- Closing / contact band ---------- */
+.closing{text-align:center;}
+.closing .names{
+  font-family:"Luxurious Script",cursive;
+  font-size:clamp(3rem,2rem + 5vw,6rem);
+  color:var(--blue-deep);line-height:1;margin:.4rem 0 1.2rem;
+}
+
+/* ---------- Footer ---------- */
+.footer{
+  background:var(--blue-deep);color:rgba(255,255,255,.86);
+  text-align:center;padding:3.4rem 1.4rem 3rem;
+}
+.footer .fnames{font-family:"Luxurious Script",cursive;font-size:2.8rem;color:#fff;line-height:1;}
+.footer .fmeta{margin-top:.6rem;letter-spacing:.22em;text-transform:uppercase;font-size:.82rem;color:var(--sage-l);}
+.footer .fnote{margin-top:1.4rem;font-size:.95rem;color:rgba(255,255,255,.6);}
+
+/* ---------- Floating contact button ---------- */
+.fab{
+  position:fixed;right:clamp(1rem,3vw,2.2rem);bottom:clamp(1rem,3vw,2.2rem);
+  z-index:70;
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:.95rem 1.5rem .95rem 1.3rem;
+  background:var(--blue-deep);color:#fff;
+  border:none;border-radius:100px;cursor:pointer;
+  font-family:"Cormorant Garamond",serif;font-size:1.05rem;font-weight:600;letter-spacing:.03em;
+  box-shadow:0 22px 46px -20px rgba(45,59,72,.85);
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease),background .4s var(--ease);
+}
+.fab:hover{transform:translateY(-4px) scale(1.02);background:var(--blue);box-shadow:0 30px 56px -20px rgba(45,59,72,.9);}
+.fab .fab-ico{width:22px;height:22px;}
+.fab::after{
+  content:"";position:absolute;inset:0;border-radius:100px;
+  box-shadow:0 0 0 0 rgba(155,174,212,.5);
+  animation:fabpulse 3.2s var(--ease) infinite;
+}
+@keyframes fabpulse{0%{box-shadow:0 0 0 0 rgba(155,174,212,.45);}70%,100%{box-shadow:0 0 0 22px rgba(155,174,212,0);}}
+.fab__label-short{display:none;}
+
+/* ---------- Contact modal ---------- */
+.modal{
+  position:fixed;inset:0;z-index:90;
+  display:flex;align-items:center;justify-content:center;
+  padding:1.2rem;
+  opacity:0;visibility:hidden;
+  transition:opacity .45s var(--ease),visibility .45s;
+}
+.modal.open{opacity:1;visibility:visible;}
+.modal__scrim{position:absolute;inset:0;background:rgba(45,59,72,.5);backdrop-filter:blur(6px);}
+.modal__panel{
+  position:relative;
+  width:min(560px,100%);
+  max-height:90vh;overflow:auto;
+  background:var(--cream);
+  border-radius:14px;
+  padding:clamp(2rem,5vw,3rem);
+  box-shadow:0 50px 120px -40px rgba(20,28,36,.7);
+  text-align:center;
+  transform:translateY(28px) scale(.97);
+  transition:transform .55s var(--ease);
+}
+.modal.open .modal__panel{transform:translateY(0) scale(1);}
+.modal__close{
+  position:absolute;top:1rem;right:1rem;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--white);border:1px solid var(--line);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;color:var(--ink);
+  transition:transform .4s var(--ease),background .3s;
+}
+.modal__close:hover{transform:rotate(90deg);background:var(--cream-2);}
+.modal h3.script{
+  font-family:"Luxurious Script",cursive;font-size:2.6rem;color:var(--blue-deep);line-height:1;margin-bottom:.4rem;
+}
+.modal p.intro-line{color:var(--ink-soft);margin:0 auto 1.8rem;max-width:40ch;}
+.persons{display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:left;}
+.person{
+  background:var(--white);border:1px solid var(--line);border-radius:12px;
+  padding:1.4rem 1.2rem;
+}
+.person .pname{
+  font-family:"Luxurious Script",cursive;font-size:2rem;color:var(--blue);line-height:1;margin-bottom:1rem;
+}
+.social{display:flex;flex-direction:column;gap:.55rem;}
+.social a{
+  display:flex;align-items:center;gap:.7rem;
+  padding:.6rem .8rem;border-radius:8px;
+  background:var(--cream);border:1px solid var(--line);
+  font-size:1rem;color:var(--ink);
+  transition:transform .35s var(--ease),background .35s,color .35s;
+}
+.social a:hover{transform:translateX(4px);background:var(--blue);color:#fff;border-color:var(--blue);}
+.social a svg{width:20px;height:20px;flex:0 0 auto;}
+.modal__foot{margin-top:1.6rem;font-size:.92rem;color:var(--ink-soft);font-style:italic;}
+
+@media(max-width:560px){
+  .persons{grid-template-columns:1fr;}
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
+.reveal.in-view{opacity:1;transform:none;}
+.reveal[data-d="1"]{transition-delay:.12s;}
+.reveal[data-d="2"]{transition-delay:.24s;}
+.reveal[data-d="3"]{transition-delay:.36s;}
+.reveal[data-d="4"]{transition-delay:.48s;}
+.reveal[data-d="5"]{transition-delay:.60s;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+/* ---------- Responsive ---------- */
+@media(max-width:840px){
+  .feature{grid-template-columns:1fr;gap:2.4rem;}
+  .feature.reverse .feature__media{order:0;}
+  .feature__body{max-width:none;}
+  .tl-row{grid-template-columns:1fr;gap:.3rem;}
+  /* drift the time to the right on hover (instead of expanding leftward) */
+  .tl-row:hover .time{transform-origin:left center;transform:translateX(8px) scale(1.05);}
+}
+@media(max-width:420px){
+  .fab__label-full{display:none;}
+  .fab__label-short{display:inline;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;}
+  .reveal{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body class="preloading">
+
+<noscript><style>#preloader{display:none!important}body.preloading{overflow:auto!important}</style></noscript>
+
+<!-- ===================== PRELOADER ===================== -->
+<div id="preloader" role="status" aria-label="Betöltés">
+  <div class="pre-stage">
+    <video id="preloaderVideo" autoplay muted playsinline preload="auto">
+      <source src="loader-speed.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav__brand">Fanni &amp; Gyuri</a>
+  <button class="nav__toggle" id="navToggle" aria-label="Menü" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav__links" id="navLinks">
+    <li><a href="#menetrend">Menetrend</a></li>
+    <li><a href="#helyszin">Helyszín</a></li>
+    <li><a href="#erkezes">Érkezés &amp; parkolás</a></li>
+    <li><a href="#szallas">Szállás</a></li>
+    <li><a href="#fahazbeosztas">Faházbeosztás</a></li>
+    <li><a href="#terkep">Térkép</a></li>
+    <li><a href="#morzsa">Morzsa party</a></li>
+    <li><a href="#kapcsolat">Kapcsolat</a></li>
+  </ul>
+</nav>
+<div class="nav__backdrop" id="navBackdrop"></div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="top">
+  <div class="hero__media" data-parallax="0.18">
+    <img src="295-2C5A6544-2.jpg" alt="Fanni és Gyuri az esküvő napján" fetchpriority="high" />
+  </div>
+  <div class="hero__wash" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Összeházasodtunk</p>
+    <h1>Fanni<span class="hero__amp">&amp;</span>Gyuri</h1>
+    <div class="hero__meta">
+      <span>2026. június 26.</span>
+      <span class="dot"></span>
+      <span>Zenit Lovarda</span>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <span>Görgess</span>
+    <span class="line"></span>
+  </div>
+</header>
+
+<!-- ===================== INTRO / WELCOME ===================== -->
+<section class="section intro">
+  <div class="narrow reveal">
+    <p class="eyebrow center">Kedves családunk &amp; barátaink</p>
+    <p class="script-accent">Nagyon várjuk, hogy együtt ünnepelhessünk</p>
+    <p class="lede">
+      Ezen az oldalon összegyűjtöttünk minden fontos tudnivalót az érkezésről, a parkolásról,
+      a szállásról, a faházbeosztásról, a helyszín megközelítéséről és a másnapi morzsa party-ról —
+      hogy a nagy napon mindenkinek csak az ünneplésre kelljen figyelnie.
+    </p>
+    <div class="divider-orn" aria-hidden="true">
+      <svg viewBox="0 0 240 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M2 12h78"/><path d="M238 12h-78"/>
+        <path d="M120 4c-8 4-8 4 0 8 8-4 8-4 0-8z" fill="currentColor" stroke="none"/>
+        <circle cx="100" cy="12" r="2" fill="currentColor" stroke="none"/>
+        <circle cx="140" cy="12" r="2" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MENETREND ===================== -->
+<section class="section alt" id="menetrend">
+  <div class="wrap">
+    <div class="narrow reveal">
+      <p class="eyebrow center">A nagy nap</p>
+      <h2 style="text-align:center">Menetrend</h2>
+    </div>
+    <div class="narrow timeline">
+      <div class="tl-row reveal" data-d="1">
+        <span class="time">16:00</span>
+        <div class="what"><h3>Vendégvárás</h3><p>Érkezés és koccintás a Zenit Lovardában.</p></div>
+      </div>
+      <div class="tl-row reveal" data-d="2">
+        <span class="time">17:00</span>
+        <div class="what"><h3>Szertartás</h3><p>A nap fénypontja — együtt mondjuk ki.</p></div>
+      </div>
+      <div class="tl-row reveal" data-d="3">
+        <span class="time">19:30</span>
+        <div class="what"><h3>Vacsora</h3><p>Közös asztal, finom falatok, jó történetek.</p></div>
+      </div>
+      <div class="tl-row reveal" data-d="4">
+        <span class="time">21:00</span>
+        <div class="what"><h3>Mulatság</h3><p>Tánc reggelig — hozzátok a jókedvet!</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DRESS CODE ===================== -->
+<section class="section dress" id="dresscode">
+  <div class="dress__tint" aria-hidden="true"></div>
+
+  <div class="dress__content">
+    <div class="narrow reveal">
+      <p class="eyebrow center">Dress code</p>
+      <h2>Pompázzatok velünk</h2>
+      <p class="lede" style="margin-top:1rem">
+        Elegáns, kényelmes, nyárias öltözetet javaslunk, amiben jól érzitek magatokat egész este.
+      </p>
+    </div>
+    <div class="swatches reveal" data-d="1" role="group" aria-label="Dress code színek">
+      <button class="swatch" type="button" data-key="bezs" data-color="#e9e2d2" data-fg="#2d3b48" aria-pressed="false" aria-label="bézs">
+        <span class="chip" style="background:#e9e2d2"></span><span>bézs</span>
+      </button>
+      <button class="swatch" type="button" data-key="szurkeskek" data-color="#9baed4" data-fg="#23303d" aria-pressed="false" aria-label="szürkéskék">
+        <span class="chip" style="background:#9baed4"></span><span>szürkéskék</span>
+      </button>
+      <button class="swatch" type="button" data-key="melykek" data-color="#5d7b9f" data-fg="#ffffff" aria-pressed="false" aria-label="mélykék">
+        <span class="chip" style="background:#5d7b9f"></span><span>mélykék</span>
+      </button>
+      <button class="swatch" type="button" data-key="vilagos" data-color="#c0cfb2" data-fg="#2d3b48" aria-pressed="false" aria-label="világos olíva">
+        <span class="chip" style="background:#c0cfb2"></span><span>világos olíva</span>
+      </button>
+      <button class="swatch" type="button" data-key="olivazold" data-color="#96a58d" data-fg="#ffffff" aria-pressed="false" aria-label="olívazöld">
+        <span class="chip" style="background:#96a58d"></span><span>olívazöld</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARALLAX 1 ===================== -->
+<section class="parallax parallax--venue">
+  <div class="parallax__img" data-parallax="0.22">
+    <img src="15-2C5A5971.jpg" alt="Fanni és Gyuri a belváros utcáin" loading="lazy" />
+  </div>
+  <div class="parallax__quote reveal">
+    <p class="q">Az esküvőnk helyszíne</p>
+  </div>
+</section>
+
+<!-- ===================== HELYSZÍN ===================== -->
+<section class="section alt" id="helyszin">
+  <div class="wrap feature">
+    <div class="feature__media reveal">
+      <div class="frame tall">
+        <img src="250-2C5A6443.jpg" alt="A pár a Zenit Lovardában" loading="lazy" />
+      </div>
+      <span class="tagchip">Zenit Lovarda</span>
+    </div>
+    <div class="feature__body reveal" data-d="1">
+      <p class="eyebrow">A helyszín</p>
+      <h2>Zenit Lovarda</h2>
+      <h3 style="margin:1rem 0 .8rem;color:var(--blue)">2026. június 26.</h3>
+      <p>
+        A nagy nap teljes egészében itt zajlik: a vendégvárás, a szertartás, a vacsora és a
+        hajnalig tartó mulatság is. Egy hely, egy este, sok közös emlék.
+      </p>
+      <div class="btnrow">
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/?api=1&destination=Zenit+Lovarda">
+          Útvonaltervezés a Zenit Lovardához
+          <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ÉRKEZÉS & PARKOLÁS ===================== -->
+<section class="section" id="erkezes">
+  <div class="wrap feature reverse">
+    <div class="feature__media reveal">
+      <div class="frame">
+        <img src="3-2C5A5844.jpg" alt="A pár sétál a macskaköves utcán" loading="lazy" />
+      </div>
+      <span class="tagchip">16:00-tól</span>
+    </div>
+    <div class="feature__body reveal" data-d="1">
+      <p class="eyebrow">Érkezés &amp; parkolás</p>
+      <h2>Érkezés</h2>
+      <p style="margin-top:1rem">
+        A vendégvárás <strong>16:00-tól</strong> kezdődik a Zenit Lovardában. Akik a kempingben
+        alszanak, a szállásokat már <strong>14:00-tól</strong> elfoglalhatják — érdemes korábban
+        érkezni (ahogy mi is szoktunk), hogy legyen idő kényelmesen beállni, bejelentkezni, átvenni a kulcsokat és
+        csipogókat, majd elkészülni az esküvőre.
+      </p>
+      <div class="cardgrid" style="grid-template-columns:1fr 1fr">
+        <div class="card reveal" data-d="2">
+          <h4>Parkolás</h4>
+          <p>Kérünk, hogy mindenképp a <strong>Törökszentmiklósi Városi Strand és Kempingnél</strong> parkoljatok.</p>
+        </div>
+        <div class="card reveal" data-d="3">
+          <h4>Parkolási díj</h4>
+          <p><span class="big">1050 Ft</span> / nap</p>
+        </div>
+      </div>
+      <div class="btnrow">
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/?api=1&destination=T%C3%B6r%C3%B6kszentmikl%C3%B3si+V%C3%A1rosi+Strand+%C3%A9s+Kemping">
+          Útvonal a kempinghez
+          <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
+        </a>
+        <a class="btn ghost" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/?api=1&destination=Zenit+Lovarda">
+          Útvonal a Zenit Lovardához
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARALLAX 2 ===================== -->
+<section class="parallax">
+  <div class="parallax__img" data-parallax="0.22">
+    <img src="16-2C5A5978-2.jpg" alt="Fanni és Gyuri" loading="lazy" />
+  </div>
+  <div class="parallax__quote reveal">
+    <p class="eyebrow center">Otthon, egy estére</p>
+    <p class="q">Ahol megpihenhettek</p>
+  </div>
+</section>
+
+<!-- ===================== SZÁLLÁS / BEJELENTKEZÉS ===================== -->
+<section class="section alt" id="szallas">
+  <div class="wrap feature">
+    <div class="feature__media reveal">
+      <div class="frame tall">
+        <img src="144-2C5A6214.jpg" alt="Bejelentkezés és aláírás" loading="lazy" />
+      </div>
+      <span class="tagchip">14:00-tól</span>
+    </div>
+    <div class="feature__body reveal" data-d="1">
+      <p class="eyebrow">Városi Strandfürdő és Kemping</p>
+      <h2>Szállás infók</h2>
+      <p style="margin-top:1rem">
+        A szállásra történő bejelentkezés a <strong>strand főbejáratánál található recepción</strong> történik.
+        Kérjük, hogy érkezés után először itt jelentkezzetek be. A bejelentkezéshez szükség lesz
+        <strong>személyi igazolvány felmutatására</strong>. A faházakhoz tartozó kulcsokat és
+        csipogókat szintén a recepción adják át.
+      </p>
+      <ul class="checklist">
+        <li>A szállások <strong>14:00-tól</strong> foglalhatók el.</li>
+        <li>Előre nem kell semmit aláírni.</li>
+        <li>Kaució nincs.</li>
+        <li>A kulcsokat és csipogókat a recepción kapjátok meg.</li>
+        <li>A faházakat másnap reggel <strong>10:00-ig</strong> kell elhagyni. Kérünk, hogy a kulcsokat és csipogókat a bejelentkezéskor elmondottak szerint adjátok le.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAHÁZBEOSZTÁS ===================== -->
+<section class="section" id="fahazbeosztas">
+  <div class="wrap">
+    <div class="narrow reveal" style="text-align:center">
+      <p class="eyebrow center">Szállásbeosztás</p>
+      <h2>Faházbeosztás</h2>
+      <p class="lede" style="margin-top:1rem">
+        Az összes faházbeosztás lent látható. A keresővel gyorsan megtalálhatod a neved.
+      </p>
+    </div>
+    <div class="fahaz-search reveal" data-d="1">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="guestSearch" type="text" placeholder="Szűrj névre…" autocomplete="off" aria-label="Vendég keresése" />
+      </div>
+    </div>
+    <div class="cabin-grid reveal" data-d="2" id="cabinGrid"></div>
+    <p class="search-note reveal" style="text-align:center;margin-top:1rem">
+      Ha nem találod magad, írj nekünk a Kapcsolat gombon keresztül!
+    </p>
+  </div>
+</section>
+
+<!-- ===================== PARALLAX 3 ===================== -->
+<section class="parallax">
+  <div class="parallax__img" data-parallax="0.22">
+    <img src="295-2C5A6544-2.jpg" alt="Fanni és Gyuri kilépnek" loading="lazy" />
+  </div>
+  <div class="parallax__quote reveal">
+    <p class="q">A szállástól a helyszínig</p>
+    <p class="sub">A kempingtől a Zenit Lovarda nagyjából 5 perc gyalog.</p>
+  </div>
+</section>
+
+<!-- ===================== TÉRKÉP ===================== -->
+<section class="section alt" id="terkep">
+  <div class="wrap">
+    <div class="narrow reveal" style="text-align:center">
+      <p class="eyebrow center">A kempingtől a Lovardáig</p>
+      <h2>Térkép</h2>
+      <p class="lede" style="margin-top:1rem">
+        A kempingtől a Zenit Lovarda nagyjából <strong>5 perc gyalog</strong>. A vendégek a kempingtől
+        gyalog mennek át az esküvő helyszínére. Mentsétek el az emlékeztetőt is, ami 15:45-kor jelez majd!
+      </p>
+    </div>
+
+    <div class="narrow mapwrap reveal" data-d="1">
+      <svg viewBox="0 0 720 280" role="img" aria-label="Útvonal a kempingtől a Zenit Lovardáig">
+        <defs>
+          <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#eef1e8"/><stop offset="1" stop-color="#e3e9da"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="720" height="280" rx="8" fill="url(#grass)"/>
+        <!-- river -->
+        <path d="M0 210 C150 190 220 250 360 230 C500 210 600 260 720 240 L720 280 L0 280 Z" fill="#cfdbe6" opacity=".7"/>
+        <!-- road -->
+        <path class="walkpath" d="M120 200 C200 180 250 120 360 120 C470 120 540 90 600 88"
+              fill="none" stroke="#96a58d" stroke-width="4" stroke-linecap="round"/>
+        <!-- camping marker -->
+        <g transform="translate(120,200)">
+          <circle r="13" fill="#5d7b9f"/>
+          <path d="M0 -6 L7 5 L-7 5 Z" fill="#fff"/>
+          <text x="0" y="34" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#2d3b48" font-weight="600">Kemping</text>
+        </g>
+        <!-- lovarda marker -->
+        <g transform="translate(600,88)">
+          <circle r="13" fill="#96a58d"/>
+          <path d="M-6 4 V-2 L0 -7 L6 -2 V4 Z" fill="#fff"/>
+          <text x="0" y="-22" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#2d3b48" font-weight="600">Zenit Lovarda</text>
+        </g>
+        <!-- walking label -->
+        <g transform="translate(360,120)">
+          <text x="0" y="-16" text-anchor="middle" font-family="Luxurious Script,cursive" font-size="30" fill="#5d7b9f">~5 perc séta</text>
+        </g>
+      </svg>
+      <div class="btnrow" style="justify-content:center">
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/T%C3%B6r%C3%B6kszentmikl%C3%B3si+V%C3%A1rosi+Strand+%C3%A9s+Kemping/Zenit+Lovarda">
+          Útvonaltervezés indítása
+          <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
+        </a>
+        <a class="btn ghost" target="_blank" rel="noopener"
+           href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Indul%C3%A1s+a+kempingt%C5%91l+a+Zenit+Lovard%C3%A1hoz&dates=20260626T134500Z/20260626T140000Z&details=A+kempingt%C5%91l+a+Zenit+Lovarda+kb.+5+perc+gyalog.&location=T%C3%B6r%C3%B6kszentmikl%C3%B3si+V%C3%A1rosi+Strand+%C3%A9s+Kemping">
+          Naptárba mentés · 15:45
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STRAND INFÓK ===================== -->
+
+<!-- ===================== PARALLAX 4 (cinematic video) ===================== -->
+<section class="parallax parallax--video" id="moment">
+  <video class="parallax__video" muted playsinline preload="auto" poster="vs-poster.jpg">
+    <source src="video-section.mp4" type="video/mp4" />
+  </video>
+  <div class="parallax__quote">
+    <p class="eyebrow center">Másnap folytatjuk</p>
+    <p class="q">Morzsafter</p>
+  </div>
+</section>
+
+<!-- ===================== MORZSA PARTY ===================== -->
+<section class="section alt" id="morzsa">
+  <div class="wrap feature">
+    <div class="feature__media reveal">
+      <div class="frame tall">
+        <img src="256-2C5A6453.jpg" alt="A pár nevet együtt" loading="lazy" />
+      </div>
+      <span class="tagchip">Június 27.</span>
+    </div>
+    <div class="feature__body reveal" data-d="1">
+      <p class="eyebrow">Másnap</p>
+      <h2>Morzsa party</h2>
+      <h3 style="margin:1rem 0 .8rem;color:var(--blue)">2026. június 27. · 11:00-tól</h3>
+      <p>
+        Másnap 11:00-tól szeretettel várunk benneteket egy kerti partin a mi családi otthonunkban. <strong>Mindenkit várunk</strong> — nem csak azokat, akik a kempingben alszanak. Lesz kaja az előző napról megmaradt finomságokból, italok, laza hangulat és egész napos levezetés. Gyertek nyugodtan, pihenősen, kényelmesen.
+      </p>
+      <div class="cardgrid" style="grid-template-columns:1fr 1fr;margin-top:1.4rem">
+        <div class="card reveal" data-d="2"><h4>Mikor</h4><p><span class="big">11:00</span>június 27.</p></div>
+        <div class="card reveal" data-d="3"><h4>Hol</h4><p>Covin utca 1.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KAPCSOLAT / CLOSING ===================== -->
+<section class="section closing" id="kapcsolat">
+  <div class="narrow reveal">
+    <p class="eyebrow center">Kapcsolat</p>
+    <h2>Bármi kérdés?</h2>
+    <p class="lede" style="margin-top:1rem">
+      Írjatok nekünk bárhol, ahol kényelmes. Ha kérdésetek van az érkezéssel, szállással,
+      faházbeosztással vagy bármi mással kapcsolatban, keressetek minket nyugodtan.
+    </p>
+    <div class="btnrow" style="justify-content:center;margin-top:2rem">
+      <button class="btn" type="button" data-open-contact>
+        Kapcsolatfelvétel
+        <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M17 7H8M17 7v9"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <p class="fnames">Fanni &amp; Gyuri</p>
+  <p class="fmeta">2026. június 26. · Zenit Lovarda</p>
+  <p class="fnote">Köszönjük, hogy velünk ünnepeltek. ♡</p>
+</footer>
+
+<!-- ===================== FLOATING CONTACT BUTTON ===================== -->
+<button class="fab" id="fab" type="button" aria-haspopup="dialog">
+  <svg class="fab-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+  </svg>
+  <span class="fab__label-full">Kapcsolat</span>
+  <span class="fab__label-short">Írj</span>
+</button>
+
+<!-- ===================== CONTACT MODAL ===================== -->
+<div class="modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+  <div class="modal__scrim" data-close-contact></div>
+  <div class="modal__panel">
+    <button class="modal__close" type="button" aria-label="Bezárás" data-close-contact>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <h3 class="script" id="contactTitle">Írjatok nekünk</h3>
+    <p class="intro-line">Az érkezéssel, szállással, faházbeosztással vagy bármivel kapcsolatban keressetek minket nyugodtan.</p>
+    <div class="persons">
+      <!-- FANNI -->
+      <div class="person">
+        <p class="pname">Fanni</p>
+        <div class="social">
+          <a href="https://m.me/bfannyflora" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.3 2 2 6.2 2 11.7c0 2.9 1.2 5.4 3.2 7.1V22l3-1.6c.8.2 1.7.3 2.6.3 5.7 0 10-4.2 10-9.7S17.7 2 12 2zm1 12.3-2.6-2.7-4.9 2.7 5.4-5.7 2.6 2.7 4.8-2.7-5.3 5.7z"/></svg>
+            Messenger
+          </a>
+        </div>
+      </div>
+      <!-- GYURI -->
+      <div class="person">
+        <p class="pname">Gyuri</p>
+        <div class="social">
+          <a href="https://m.me/gyuri.takacs" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.3 2 2 6.2 2 11.7c0 2.9 1.2 5.4 3.2 7.1V22l3-1.6c.8.2 1.7.3 2.6.3 5.7 0 10-4.2 10-9.7S17.7 2 12 2zm1 12.3-2.6-2.7-4.9 2.7 5.4-5.7 2.6 2.7 4.8-2.7-5.3 5.7z"/></svg>
+            Messenger
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Preloader: play the door video, then hand off to the hero ----------
+     The video's last frame == the hero photo (295), and the video stage mirrors
+     the hero geometry, so we cross-fade on "ended" for a seamless transition. */
+  var pre = document.getElementById("preloader");
+  if(pre){
+    var preVideo = document.getElementById("preloaderVideo");
+    var heroImg = document.querySelector(".hero__media img");
+    var preDone = false;
+    var FALLBACK = 11000;                 // safety cap (video runs ~8s)
+
+    function revealSite(){
+      if(preDone) return; preDone = true;
+      if(preVideo){ try{ preVideo.pause(); }catch(e){} }  // freeze the exact last frame
+      pre.classList.add("hidden");                          // dissolve video → identical hero
+      document.body.classList.remove("preloading");
+      setTimeout(function(){
+        if(pre.parentNode) pre.parentNode.removeChild(pre);
+        document.body.classList.add("revealed");            // THEN fade in the light wash (separate cue)
+      }, 1000);
+    }
+
+    // only swap once the hero image underneath is actually painted
+    function handOff(){
+      if(heroImg && !heroImg.complete){
+        heroImg.addEventListener("load", revealSite, {once:true});
+        heroImg.addEventListener("error", revealSite, {once:true});
+        setTimeout(revealSite, 1500);
+      } else {
+        revealSite();
+      }
+    }
+
+    if(preVideo){
+      preVideo.addEventListener("ended", handOff, {once:true});
+      // if autoplay is blocked or the video stalls, fall back to its duration
+      preVideo.addEventListener("loadedmetadata", function(){
+        var d = isFinite(preVideo.duration) && preVideo.duration > 0 ? preVideo.duration : 8;
+        setTimeout(handOff, (d * 1000) + 400);
+      });
+      var pl = preVideo.play && preVideo.play();
+      if(pl && pl.catch){ pl.catch(function(){ /* fallbacks cover this */ }); }
+    }
+    setTimeout(handOff, FALLBACK);
+  }
+
+  /* ---------- Nav: scrolled state + mobile toggle ---------- */
+  var nav = document.getElementById("nav");
+  var toggle = document.getElementById("navToggle");
+  var navLinks = document.getElementById("navLinks");
+  var backdrop = document.getElementById("navBackdrop");
+
+  function closeMenu(){ nav.classList.remove("open"); toggle.setAttribute("aria-expanded","false"); }
+  toggle.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true":"false");
+  });
+  backdrop.addEventListener("click", closeMenu);
+  navLinks.addEventListener("click", function(e){ if(e.target.closest("a")) closeMenu(); });
+
+  /* ---------- Scroll-linked: nav style + parallax ---------- */
+  var parallaxEls = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+  var ticking = false;
+  function onScroll(){
+    var y = window.pageYOffset;
+    nav.classList.toggle("scrolled", y > 40);
+    if(!reduce){
+      for(var i=0;i<parallaxEls.length;i++){
+        var el = parallaxEls[i];
+        var rect = el.parentElement.getBoundingClientRect();
+        if(rect.bottom < -200 || rect.top > window.innerHeight+200) continue;
+        var speed = parseFloat(el.getAttribute("data-parallax")) || 0.2;
+        var offset = (rect.top + rect.height/2 - window.innerHeight/2) * speed;
+        el.style.transform = "translate3d(0," + (-offset).toFixed(1) + "px,0)";
+      }
+    }
+    ticking = false;
+  }
+  window.addEventListener("scroll", function(){
+    if(!ticking){ window.requestAnimationFrame(onScroll); ticking = true; }
+  }, {passive:true});
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add("in-view"); io.unobserve(en.target); }
+      });
+    }, {threshold:0.16, rootMargin:"0px 0px -8% 0px"});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add("in-view"); });
+  }
+
+  /* ---------- Active nav link via section observer ---------- */
+  var sections = document.querySelectorAll("section[id], header[id]");
+  var linkMap = {};
+  document.querySelectorAll(".nav__links a").forEach(function(a){
+    linkMap[a.getAttribute("href").slice(1)] = a;
+  });
+  if("IntersectionObserver" in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var id = en.target.id, link = linkMap[id];
+        if(!link) return;
+        if(en.isIntersecting){
+          document.querySelectorAll(".nav__links a.active").forEach(function(a){a.classList.remove("active");});
+          link.classList.add("active");
+        }
+      });
+    }, {rootMargin:"-45% 0px -50% 0px"});
+    sections.forEach(function(s){ spy.observe(s); });
+  }
+
+  /* ---------- Faházbeosztás ---------- */
+  var CABINS = [
+    {label:"Faház 1.", rooms:[
+      [{nick:"Boresz", full:"Bornai Ádám"},    {nick:"Lina",   full:"Vincze Brigitta"}, {nick:"Bence",  full:"Gáspár Bence"}],
+      [{nick:"Dóri",   full:"Báthory Dóra"},   {nick:"Sziszi", full:"Gáspár Sziszi"},   {nick:"Tomi",   full:"Gál Tamás"}]
+    ]},
+    {label:"Faház 2.", rooms:[
+      [{nick:"Janka",  full:"Bárkányi Janka"}, {nick:"Gábris", full:"Tajti Gábor"},     {nick:"Zsófi",  full:"Englert Zsófi"}],
+      [{nick:"P. Nagy",full:"P. Nagy Tamás"},  {nick:"Dorci",  full:"László Dorina"},   {nick:"Káló",   full:"Kálóczi Tamás"}]
+    ]},
+    {label:"Faház 3.", rooms:[
+      [{nick:"Artúr",  full:"Bede Artúr"},     {nick:"Domi",   full:"Kováts Domonkos"},{nick:"Marci",  full:"Székely Márton"}],
+      [{nick:"Lili",   full:"Kubik Lili"},     {nick:"DJ Paál Marci", full:"DJ Paál Marci"},{nick:"DJ 2", full:"DJ 2"}]
+    ]},
+    {label:"Faház 4.", rooms:[
+      [{nick:"Csaba",  full:"Maller Csaba"},   {nick:"Flóra",  full:"Horváth Flóra"},  {nick:"Zsófi",  full:"Pap Zsófi"}],
+      [{nick:"Réka",   full:"Tóth Réka"},      {nick:"Feri",   full:"Fábián Ferenc"},   {nick:"Eszter", full:"Csertő Eszter"}]
+    ]},
+    {label:"Faház 5.", rooms:[
+      [{nick:"Norba",  full:"Spikut Norbert"}, {nick:"Larissza",full:"Száldobágyi Larissza"},{nick:"Bálint",full:"Barna Bálint"}],
+      [{nick:"Bia",    full:"Papp Bianka"},    {nick:"Zotya",  full:"Nagy Zoltán"},     {nick:"TZ",     full:"Tamás Zoltán"}]
+    ]},
+    {label:"Faház 6.", rooms:[
+      [{nick:"Illés",  full:"Gáspár Illés"},   {nick:"Juli",   full:"Kremmer Júlia"},   {nick:"Jenny",  full:"Petes Jenny"},  {nick:"Zsolt",  full:"Petes Zsolt"}],
+      [{nick:"Tomi",   full:"Takács Tamás"},   {nick:"Vani",   full:"Nagy Vanessza"},   {nick:"Adi",    full:"Horváth Adorján"},{nick:"Laura", full:"Horváth Laura"}]
+    ]}
+  ];
+
+  function norm(s){ return s.toLowerCase()
+    .replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i")
+    .replace(/[óöő]/g,"o").replace(/[úüű]/g,"u").trim(); }
+
+  var grid = document.getElementById("cabinGrid");
+  CABINS.forEach(function(cabin){
+    var card = document.createElement("div");
+    card.className = "cabin-card";
+    var title = document.createElement("div");
+    title.className = "cabin-card__title";
+    title.textContent = cabin.label;
+    card.appendChild(title);
+    var roomsEl = document.createElement("div");
+    roomsEl.className = "cabin-rooms";
+    cabin.rooms.forEach(function(room, ri){
+      var roomEl = document.createElement("div");
+      roomEl.className = "cabin-room";
+      var lbl = document.createElement("div");
+      lbl.className = "cabin-room__label";
+      lbl.textContent = (ri === 0 ? "1." : "2.") + " szoba";
+      roomEl.appendChild(lbl);
+      room.forEach(function(g){
+        var el = document.createElement("div");
+        el.className = "cabin-guest";
+        el.dataset.nick = norm(g.nick);
+        el.dataset.full = norm(g.full);
+        el.innerHTML = '<div class="cabin-guest__nick">'+g.nick+'</div><div class="cabin-guest__full">'+g.full+'</div>';
+        roomEl.appendChild(el);
+      });
+      roomsEl.appendChild(roomEl);
+    });
+    card.appendChild(roomsEl);
+    grid.appendChild(card);
+  });
+
+  var guestInput = document.getElementById("guestSearch");
+  guestInput.addEventListener("input", function(){
+    var q = norm(this.value);
+    grid.querySelectorAll(".cabin-card").forEach(function(card){
+      var guests = card.querySelectorAll(".cabin-guest");
+      if(q.length < 2){
+        guests.forEach(function(g){ g.classList.remove("hidden","dim"); });
+        card.classList.remove("no-match");
+        return;
+      }
+      var hasMatch = false;
+      guests.forEach(function(g){
+        var match = g.dataset.nick.indexOf(q) > -1 || g.dataset.full.indexOf(q) > -1;
+        if(match) hasMatch = true;
+      });
+      card.classList.toggle("no-match", !hasMatch);
+      // if this card has a match: show all guests, dim the non-matching ones
+      // if no match: hide all (covered by no-match opacity on the card)
+      guests.forEach(function(g){
+        var match = g.dataset.nick.indexOf(q) > -1 || g.dataset.full.indexOf(q) > -1;
+        g.classList.remove("hidden");
+        g.classList.toggle("dim", hasMatch && !match);
+      });
+    });
+  });
+
+  /* ---------- Dress code: each colour reveals its own photo + subtle tint ---------- */
+  var dress = document.querySelector(".dress");
+  if(dress){
+    var bgs = dress.querySelectorAll(".dress__bg");
+    var tint = dress.querySelector(".dress__tint");
+    var sws = dress.querySelectorAll(".swatch");
+    var selectedKey = null, selectedColor = null, selectedFg = null;
+
+    function show(key, color, fg){
+      bgs.forEach(function(b){ b.classList.toggle("active", b.getAttribute("data-key") === key); });
+      if(color && tint) tint.style.backgroundColor = color;
+      if(fg) dress.style.setProperty("--dc-fg", fg);
+    }
+    function select(sw){
+      selectedKey = sw.getAttribute("data-key");
+      selectedColor = sw.getAttribute("data-color");
+      selectedFg = sw.getAttribute("data-fg");
+      sws.forEach(function(s){
+        var on = (s === sw);
+        s.classList.toggle("is-selected", on);
+        s.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      show(selectedKey, selectedColor, selectedFg);
+    }
+
+    sws.forEach(function(sw){
+      var key = sw.getAttribute("data-key"), color = sw.getAttribute("data-color"), fg = sw.getAttribute("data-fg");
+      sw.addEventListener("mouseenter", function(){ show(key, color, fg); });   // hover previews
+      sw.addEventListener("focus", function(){ show(key, color, fg); });
+      sw.addEventListener("click", function(){ select(sw); });                 // click commits
+    });
+    var wrap = dress.querySelector(".swatches");
+    if(wrap) wrap.addEventListener("mouseleave", function(){ show(selectedKey, selectedColor, selectedFg); });
+
+    var dcDefault = dress.querySelector('.swatch[data-key="melykek"]') || sws[0];
+    if(dcDefault) select(dcDefault);  // default colour: mélykék
+  }
+
+  /* ---------- Cinematic video divider: auto-snap, play once, non-skippable ---------- */
+  var vsec = document.getElementById("moment");
+  if(vsec){
+    var vsVideo = vsec.querySelector(".parallax__video");
+    var vsPlayed = false;
+
+    function vsPrevent(e){ e.preventDefault(); }
+    function vsPreventKeys(e){
+      var keys = [" ","Spacebar","ArrowUp","ArrowDown","PageUp","PageDown","Home","End"];
+      if(keys.indexOf(e.key) > -1) e.preventDefault();
+    }
+    function vsLock(){
+      window.addEventListener("wheel", vsPrevent, {passive:false});
+      window.addEventListener("touchmove", vsPrevent, {passive:false});
+      window.addEventListener("keydown", vsPreventKeys, {passive:false});
+    }
+    function vsUnlock(){
+      window.removeEventListener("wheel", vsPrevent, {passive:false});
+      window.removeEventListener("touchmove", vsPrevent, {passive:false});
+      window.removeEventListener("keydown", vsPreventKeys, {passive:false});
+    }
+    function vsPlay(){
+      var p = vsVideo && vsVideo.play && vsVideo.play();
+      if(p && p.catch) p.catch(function(){ /* fallbacks below */ });
+    }
+
+    function vsEngage(){
+      if(vsPlayed) return; vsPlayed = true;
+
+      if(reduce){                         // accessibility: no scroll-jacking
+        vsec.classList.add("is-active");
+        vsPlay();
+        return;
+      }
+
+      vsLock();                                                  // non-skippable
+      var target = vsec.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({top:target, behavior:"smooth"});          // slide to exactly fullscreen
+      setTimeout(function(){
+        vsPlay();
+        vsec.classList.add("is-active");                         // delayed text entry
+      }, 480);
+
+      var freed = false;
+      function vsFinish(){ if(freed) return; freed = true; vsUnlock(); }
+      if(vsVideo) vsVideo.addEventListener("ended", vsFinish, {once:true});
+      setTimeout(vsFinish, 5000);          // safety cap — never trap the user
+    }
+
+    if("IntersectionObserver" in window){
+      var vsIo = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting && en.intersectionRatio >= 0.55) vsEngage();
+        });
+      }, {threshold:[0,0.55,1]});
+      vsIo.observe(vsec);
+    } else {
+      vsec.classList.add("is-active");
+      vsPlay();
+    }
+  }
+
+  /* ---------- Contact modal ---------- */
+  var modal = document.getElementById("contactModal");
+  var fab = document.getElementById("fab");
+  var lastFocus = null;
+  function openModal(){
+    lastFocus = document.activeElement;
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    var c = modal.querySelector(".modal__close"); if(c) c.focus();
+  }
+  function closeModal(){
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+    if(lastFocus) lastFocus.focus();
+  }
+  fab.addEventListener("click", openModal);
+  document.querySelectorAll("[data-open-contact]").forEach(function(b){ b.addEventListener("click", openModal); });
+  document.querySelectorAll("[data-close-contact]").forEach(function(b){ b.addEventListener("click", closeModal); });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && modal.classList.contains("open")) closeModal();
+  });
+})();
+</script>
+</body>
+</html>
